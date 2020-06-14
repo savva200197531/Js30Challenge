@@ -47,17 +47,40 @@
     </div>
   </div>
 
-  <audio data-key="65" src="sounds/clap.wav"></audio>
-  <audio data-key="83" src="sounds/hihat.wav"></audio>
-  <audio data-key="68" src="sounds/kick.wav"></audio>
-  <audio data-key="70" src="sounds/openhat.wav"></audio>
-  <audio data-key="71" src="sounds/boom.wav"></audio>
-  <audio data-key="72" src="sounds/ride.wav"></audio>
-  <audio data-key="74" src="sounds/snare.wav"></audio>
-  <audio data-key="75" src="sounds/tom.wav"></audio>
-  <audio data-key="76" src="sounds/tink.wav"></audio>
+  <audio data-key="65" src="http://soundboard.ass-we-can.com/static/music/BillyH/AAAAAAAH.mp3"></audio>
+  <audio data-key="83" src="http://soundboard.ass-we-can.com/static/music/BillyH/Ass we can.mp3"></audio>
+  <audio data-key="68" src="http://soundboard.ass-we-can.com/static/music/MarkW/Boss of this gym.mp3"></audio>
+  <audio data-key="70" src="http://soundboard.ass-we-can.com/static/music/MarkW/Come on.mp3"></audio>
+  <audio data-key="71" src="http://soundboard.ass-we-can.com/static/music/Slave/Oh Oh Aaah Ah.mp3"></audio>
+  <audio data-key="72" src="http://soundboard.ass-we-can.com/static/music/VanD/Boy next door.mp3"></audio>
+  <audio data-key="74" src="http://soundboard.ass-we-can.com/static/music/babyface/RIP ears.mp3"></audio>
+  <audio data-key="75" src="http://soundboard.ass-we-can.com/static/music/VanD/FUCKYOU.mp3"></audio>
+  <audio data-key="76" src="http://soundboard.ass-we-can.com/static/music/VanD/WOO.mp3"></audio>
 
 <script>
+  let turnOffLight = event => {
+    if (event.propertyName !== 'transform') return;
+    event.target.classList.remove('playing')
+  };
+
+  let blow = (event) => {
+    let button = document.querySelector(`div[data-key="${event.keyCode}"]`);
+    let audio = document.querySelector(`audio[data-key="${event.keyCode}"]`);
+    if (!audio) return;
+    button.classList.add('playing');
+    audio.currentTime = 0;
+    audio.play();
+  };
+
+  const buttons = document.querySelectorAll('.key');
+  window.addEventListener('keydown' , blow);
+  buttons.forEach((button) => button.addEventListener('transitionend' , turnOffLight));
+
+
+
+
+
+
 
 </script>
 
